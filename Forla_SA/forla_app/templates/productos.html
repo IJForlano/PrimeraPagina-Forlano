@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Productos</title>
+{% extends "inicio.html" %}
+
+
 </head>
 <body>
+{% block content %}
+
 Estos son nuestros productos:
 {% for producto in productos %}
     <li> {{ producto.nombre}} : {{producto.precio}}</li>
 {% endfor %}
+{% endblock %}
+
 </body>
 </html>

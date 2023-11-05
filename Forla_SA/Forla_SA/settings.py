@@ -55,7 +55,7 @@ ROOT_URLCONF = 'Forla_SA.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/"Forla_SA/forla_app/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -101,8 +101,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "staticfiles",
+]
+STATIC_ROOT = BASE_DIR / "static_root"
+
 
 LANGUAGE_CODE = 'en-us'
 
@@ -115,10 +119,3 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-STATIC_URL = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

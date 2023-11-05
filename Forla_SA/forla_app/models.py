@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 class Producto(models.Model):
@@ -12,7 +13,6 @@ class Categoria(models.Model):
     nombre = models.CharField(max_length=200)
     descripcion = models.CharField(max_length=800)
 
-#>>> producto = Producto(nombre="Prueba", descripcion="hola", precio="111.11")
 
 class Pedido(models.Model):
     detalle = models.CharField(max_length=100000)
@@ -23,4 +23,3 @@ class Cliente(models.Model):
     nombre = models.CharField(max_length=200)
     email = models.EmailField()
     pedidos_pasados = models.IntegerField()
-

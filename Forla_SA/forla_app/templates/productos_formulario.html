@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
-</head>
-<body>
-    <form action="/productos_formulario/" method="post">
-        <p>Nombre: <input type = "text" name="nombre">
-        <p>Descripcion: <input type = "text" name="descripcion">
-        <p>Precio: <input type = "text" name="precio">
-        <input type="submit" value="Enviar">
+{% extends "inicio.html" %}
+
+{% block content %}
+    <h2>Buscar un Producto</h2>
+    <form method="get" action="{% url 'buscador_productos' %}">
+        {{ formulario.as_p }}
+        <button type="submit">Buscar</button>
     </form>
 
-</body>
-</html>
+    {% if precio_producto %}
+        <h3>Precio del Producto:</h3>
+        <p>Nombre: {{ nombre_producto }}</p>
+        <p>Precio: {{ precio_producto }}</p>
+    {% endif %}
+{% endblock %}
