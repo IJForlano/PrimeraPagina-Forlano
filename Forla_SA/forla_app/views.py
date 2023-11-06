@@ -60,7 +60,7 @@ def pedidos_formulario(request):
             pedido.save()
             return render(request, "inicio.html")
     else:
-        mi_formulario = ProductosFormulario()
+        mi_formulario = PedidosFormulario()
     return render(request, "pedidos_formulario.html", {"mi_formulario": mi_formulario})
 
 
