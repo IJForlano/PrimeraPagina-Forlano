@@ -1,17 +1,12 @@
-from django.shortcuts import render, HttpResponse
 from .models import Producto, Cliente, Categoria, Pedido
 from .forms import ProductosFormulario, ClientesFormulario, PedidosFormulario
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 
 # Create your views here.
 
 
 def inicio(request):
     return render(request, "inicio.html")
-
-
-def producto(request):
-    productos = Producto.objects.all()
-    return render(request, "productos.html", {"productos": productos})
 
 
 def nosotros(request):
@@ -31,8 +26,6 @@ def productos_formulario(request):
     else:
         mi_formulario = ProductosFormulario()
         return render(request, "productos_formulario.html", {"mi_formulario": mi_formulario})
-
-
 
 
 def clientes_formulario(request):
@@ -77,4 +70,23 @@ def buscador_precio(request):
 
     formulario = ProductosFormulario()
 
-    return render(request, 'buscador_precio.html', {'formulario': formulario, 'nombre_producto': nombre_producto, 'precio_producto': precio_producto})
+    return render(request, 'buscador_precio.html',
+                  {'formulario': formulario, 'nombre_producto': nombre_producto, 'precio_producto': precio_producto})
+
+
+def leer_productos(request):
+    productos = Producto.objects.all()
+    return render(request, "leer_productos.html", {"productos": productos})
+
+
+def eliminar_producto(request, producto_nombre):
+    producto = get_object_or_404(Producto, nombre=producto_nombre)
+
+    if request.method == 'POST':
+        # Lógica para eliminar el producto
+        producto.delete()
+        return redirect('leer_productos')
+    else:
+        # Muestra una página de confirmación si es una solicitud GET
+        return render(request, 'confirmar_eliminar_producto.html', {'producto': producto})
+

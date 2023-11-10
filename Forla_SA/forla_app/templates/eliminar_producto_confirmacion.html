@@ -1,0 +1,6 @@
+{% extends "inicio.html" %}
+
+{% block content %}
+    <h2>Producto '{{ producto.nombre }}' eliminado exitosamente</h2>
+    <a href="{% url 'leer_productos' %}">Volver a la lista de productos</a>
+{% endblock %}
